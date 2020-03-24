@@ -6,13 +6,26 @@ public class Chaser : MonoBehaviour
 
     public float speed = 7f;
 
+    private Rigidbody rigidbody;
+
+    private Vector3 velocity;
+
+    private Vector3 displacementFromPlayer;
+
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
-        var displacementFromPlayer = playerTransform.position - transform.position;
-        var directionToPlayer = displacementFromPlayer.normalized;
-        var valocity = directionToPlayer * speed;
+        displacementFromPlayer = playerTransform.position - transform.position;
+        velocity = displacementFromPlayer.normalized * speed;
+    }
 
+    void FixedUpdate()
+    {
         if (displacementFromPlayer.magnitude > 1.5)
-            transform.Translate(valocity * Time.deltaTime);
+            rigidbody.position += velocity * Time.fixedDeltaTime;
     }
 }
