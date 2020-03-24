@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     private Vector3 velocity;
 
+    public GameObject coin;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -27,8 +29,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider triggerEvent)
     {
-        print(triggerEvent.gameObject.name);
         if (triggerEvent.gameObject.tag.Equals("Coin"))
             Destroy(triggerEvent.gameObject);
+
+        Instantiate(coin, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.Euler(new Vector3(0, Random.Range(0, 180), 90)));
     }
 }
