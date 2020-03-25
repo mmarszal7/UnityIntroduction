@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public enum WrappingMode
@@ -9,6 +11,9 @@ public enum WrappingMode
 
 public class Player : MonoBehaviour
 {
+    public GameObject gameOverScreen;
+    public Text score;
+
     public float speed = 10f;
     public float spawningSpeed = 2.0f;
     public GameObject FallingObject;
@@ -31,6 +36,9 @@ public class Player : MonoBehaviour
         var input = new Vector3(0, 0, Input.GetAxisRaw("Horizontal"));
         var direction = input.normalized;
         velocity = direction * speed;
+
+        if (gameOverScreen.activeSelf && Input.GetKeyDown(KeyCode.Space))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void FixedUpdate()
@@ -46,7 +54,11 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider triggerEvent)
     {
         if (triggerEvent.gameObject.tag.Equals("FallingObject"))
-            Destroy(triggerEvent.gameObject);
+        {
+            transform.Translate(new Vector3(0, -10));
+            gameOverScreen.SetActive(true);
+            score.text = Time.timeSinceLevelLoad.ToString("F2");
+        }
     }
 
     private void CreateFallingObject()
