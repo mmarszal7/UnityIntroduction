@@ -4,10 +4,20 @@ public class Guard : MonoBehaviour
 {
     public Animator animator;
 
-    void Start()
-    {
-        InvokeRepeating("Damaged", 0, 2);
-    }
+    private float health = 100f;
 
-    private void Damaged() => animator.SetTrigger("damaged");
+    public void Damaged()
+    {
+        if (health <= 0)
+            return;
+
+        health -= 50f;
+        animator.SetTrigger("damaged");
+
+        if (health <= 0)
+        {
+            animator.SetTrigger("death");
+            GetComponent<Collider2D>().enabled = false;
+        }
+    }
 }

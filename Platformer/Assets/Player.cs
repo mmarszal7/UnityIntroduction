@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public Animator animator;
     public CharacterController2D controller;
+
+    public Transform attackPoint;
+    public float attackRange;
+    public LayerMask enemies;
 
     private float timeFromLastAttack = 1f;
 
@@ -15,6 +20,8 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("attack");
             timeFromLastAttack = 0f;
+
+            Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemies).ToList().ForEach(e => e.GetComponent<Guard>().Damaged());
         }
 
         // Jump
@@ -30,5 +37,10 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", Mathf.Abs(move));
 
         controller.Move(move * 0.1f, false, jump);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
