@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // Attack
         timeFromLastAttack += Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && timeFromLastAttack > 0.5f)
         {
@@ -16,12 +17,17 @@ public class Player : MonoBehaviour
             timeFromLastAttack = 0f;
         }
 
-        var move = Input.GetAxisRaw("Horizontal");
-        var jump = Input.GetAxisRaw("Jump") > 0.1;
-
-        animator.SetFloat("speed", Mathf.Abs(move));
-        if (jump)
+        // Jump
+        var jump = false;
+        if (Input.GetButtonDown("Jump"))
+        {
             animator.SetTrigger("jump");
+            jump = true;
+        }
+
+        // Move
+        var move = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("speed", Mathf.Abs(move));
 
         controller.Move(move * 0.1f, false, jump);
     }
