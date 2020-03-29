@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemies;
+    public float speed = 0.2f;
 
     private float timeFromLastAttack = 1f;
 
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
         var move = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("speed", Mathf.Abs(move));
 
-        controller.Move(move * 0.1f, false, jump);
+        controller.Move(move * speed, false, jump);
     }
 
     private void OnDrawGizmos()

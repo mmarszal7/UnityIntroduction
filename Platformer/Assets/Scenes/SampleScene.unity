@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656981004}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SwordTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 718783214}
   - component: {fileID: 718783216}
   - component: {fileID: 718783217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,6 +408,7 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 512
+  speed: 0.2
 --- !u!114 &718783218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1065124533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +971,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141369934}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1024,6 +1025,8 @@ MonoBehaviour:
   animator: {fileID: 1141369937}
   rigidBody: {fileID: 1141369938}
   attackRange: 0.25
+  speed: 1
+  isFlipped: 0
 --- !u!1 &1515015877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517505378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
