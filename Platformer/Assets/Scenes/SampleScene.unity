@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1141369937}
   rigidBody: {fileID: 1141369938}
-  attackRange: 0.25
+  attackRange: 0.3
   speed: 1
   isFlipped: 0
 --- !u!1 &1515015877

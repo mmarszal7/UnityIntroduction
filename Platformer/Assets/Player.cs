@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         // Attack
         timeFromLastAttack += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && timeFromLastAttack > 0.5f)
+        if (Input.GetMouseButtonDown(0) && timeFromLastAttack > 0.4f)
         {
             animator.SetTrigger("attack");
             timeFromLastAttack = 0f;
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
     public void Damaged()
     {
+        timeFromLastAttack = 0f;
         animator.SetTrigger("damaged");
     }
 }
