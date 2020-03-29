@@ -43,4 +43,9 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+    public void Damaged()
+    {
+        animator.SetTrigger("damaged");
+    }
 }

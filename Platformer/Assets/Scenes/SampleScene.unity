@@ -1022,6 +1022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1141369937}
+  rigidBody: {fileID: 1141369938}
+  attackRange: 0.25
 --- !u!1 &1515015877
 GameObject:
   m_ObjectHideFlags: 0
