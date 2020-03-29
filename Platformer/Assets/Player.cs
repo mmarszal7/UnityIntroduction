@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
 
     public void Damaged()
     {
-        timeFromLastAttack = 0f;
         animator.SetTrigger("damaged");
     }
 }

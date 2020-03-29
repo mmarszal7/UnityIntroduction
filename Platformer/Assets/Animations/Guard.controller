@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4945953a4d71be643bc42275c176f0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 0}
 --- !u!1101 &-7582418460254087260
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

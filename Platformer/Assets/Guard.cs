@@ -52,11 +52,14 @@ public class Guard : MonoBehaviour
 
         if (health <= 0)
         {
-            print("death");
             animator.SetTrigger("death");
             healthBar.gameObject.SetActive(false);
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            Invoke("CleanBody", 5);
         }
     }
+
+    private void CleanBody() => Destroy(gameObject);
 
     public bool isFlipped = false;
     public void LookAtPlayer()
