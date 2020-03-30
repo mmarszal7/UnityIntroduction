@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public Animator animator;
     public CharacterController2D controller;
 
+    public AudioSource attackSound;
+
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemies;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && timeFromLastAttack > 0.4f)
         {
             animator.SetTrigger("attack");
+            attackSound.Play();
             timeFromLastAttack = 0f;
 
             Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemies).ToList().ForEach(e => e.GetComponent<Guard>().Damaged());
