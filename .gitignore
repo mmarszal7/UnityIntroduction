@@ -48,6 +48,7 @@
 # Builds
 *.apk
 *.unitypackage
+!/Shared/*.unitypackage
 
 # Crashlytics generated file
 */crashlytics-build.properties
