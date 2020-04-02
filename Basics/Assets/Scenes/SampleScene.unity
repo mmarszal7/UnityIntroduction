@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 62399893}
   - component: {fileID: 62399892}
   - component: {fileID: 62399891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 251810282}
   - component: {fileID: 251810281}
   - component: {fileID: 251810280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434959476}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,6 +415,36 @@ Transform:
   - {fileID: 1603584686}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &534747171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 534747172}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &534747172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534747171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1237548120}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670747964
 GameObject:
@@ -715,8 +745,9 @@ GameObject:
   - component: {fileID: 1237548120}
   - component: {fileID: 1237548119}
   - component: {fileID: 1237548118}
-  - component: {fileID: 1237548121}
   - component: {fileID: 1237548123}
+  - component: {fileID: 1237548117}
+  - component: {fileID: 1237548121}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -724,6 +755,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1237548117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237548116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cbab75bfac4274fbced5d7a9542ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  Camera: {fileID: 361203590}
+  GroundCheck: {fileID: 534747172}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!23 &1237548118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -783,6 +832,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 361203588}
+  - {fileID: 534747172}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -795,12 +845,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1237548116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4601f231459a4f40951dbe716b37f87, type: 3}
+  m_Script: {fileID: 11500000, guid: 132f065c1897c5d4aae0b1f476cfdb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   coin: {fileID: 4896972701063461955, guid: 1ccd01c69e70c1b41810ee53fc2fd757, type: 3}
-  Camera: {fileID: 361203590}
 --- !u!143 &1237548123
 CharacterController:
   m_ObjectHideFlags: 0
@@ -831,7 +879,7 @@ GameObject:
   - component: {fileID: 1603584685}
   - component: {fileID: 1603584684}
   - component: {fileID: 1603584683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +972,7 @@ GameObject:
   - component: {fileID: 1926681542}
   - component: {fileID: 1926681541}
   - component: {fileID: 1926681540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

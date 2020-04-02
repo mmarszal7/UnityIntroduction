@@ -1,31 +1,35 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
-    public GameObject coin;
-    public Camera Camera;
+    // Movement
+    public float Speed = 10f;
     private CharacterController CharacterController;
 
+    // Camera
+    public Camera Camera;
     private float mouseSensitivity = 100f;
     private float xRotation = 0f;
+
+    // Gravity
+    public Transform GroundCheck;
+    public LayerMask Ground;
+    private float gravity = -9.81f;
+    private Vector3 velocity;
+    private bool isGrounded;
+    private float jumpHeight = 2f;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         CharacterController = GetComponent<CharacterController>();
-
-        for (var i = 0; i < 5; i++)
-        {
-            Instantiate(coin, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.Euler(new Vector3(0, Random.Range(0, 180), 90)));
-        }
     }
 
     void Update()
     {
         // Movement
         var move = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-        CharacterController.Move(move * speed * Time.deltaTime);
+        CharacterController.Move(move * Speed * Time.deltaTime);
 
         // Camera
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -36,13 +40,16 @@ public class Player : MonoBehaviour
 
         Camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         transform.Rotate(Vector3.up * mouseX);
-    }
 
-    void OnTriggerEnter(Collider triggerEvent)
-    {
-        if (triggerEvent.gameObject.tag.Equals("Coin"))
-            Destroy(triggerEvent.gameObject);
+        // Gravity
+        isGrounded = Physics.CheckSphere(GroundCheck.position, 0.4f, Ground);
+        if (isGrounded && velocity.y < 0)
+            velocity.y = -2f;
 
-        Instantiate(coin, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.Euler(new Vector3(0, Random.Range(0, 180), 90)));
+        if (Input.GetButtonDown("Jump") && isGrounded)
+            velocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
+
+        velocity.y += gravity * Time.deltaTime;
+        CharacterController.Move(velocity * Time.deltaTime);
     }
 }
