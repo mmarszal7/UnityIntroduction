@@ -4,20 +4,25 @@ public class Bullet : MonoBehaviour
 {
     public float power = 100f;
 
-    private int lifeTime = 10;
+    public GameObject effectOnDestroy;
+
+    private int lifeTime = 3;
 
     void Start()
     {
         var Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.AddForce(transform.forward * power);
 
-        Invoke("DestroyBullet", lifeTime);
+        Destroy(gameObject, lifeTime);
     }
-
-    void DestroyBullet() => Destroy(gameObject);
 
     void OnTriggerEnter(Collider triggerEvent)
     {
-        DestroyBullet();
+        Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        Instantiate(effectOnDestroy, transform.position, transform.rotation);
     }
 }
